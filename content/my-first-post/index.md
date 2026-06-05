@@ -2,9 +2,11 @@
 title = "My First Post"
 date = 2026-06-05
 [taxonomies]
-tags = ["webdev"]
-categories = ["tutorials"]
+tags = []
+categories = []
+
+[extra]
+cover_image = "cover.png"
 +++
 
-dus
-sus
+This is first post content
