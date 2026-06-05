@@ -1,0 +1,23 @@
+theme = "radion"
+base_url = "buttersus.github.io"
+
+taxonomies = [
+  { name = "categories", feed = true },
+  { name = "tags", feed = true },
+]
+
+[markdown.highlighting]
+style = "class"
+dark_theme = "material-theme-palenight"
+light_theme = "everforest-light"
+
+[extra]
+theme = "toggle"
+radion_title = "Сочные пельмени"
+comments = false
+github = "https://github.com/ButterSus"
+radion_menu = [
+    { url = "$BASE_URL", name = "Home" },
+    { url = "$BASE_URL/categories", name = "Categories" },
+    { url = "$BASE_URL/tags", name = "Tags" },
+]
