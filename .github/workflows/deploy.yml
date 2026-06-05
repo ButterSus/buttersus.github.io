@@ -24,15 +24,11 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install NPM packages
-        uses: actions/setup-node@v4
-        with: { node-version: 21, cache: "npm" }
+        with:
+          submodules: 'recursive'
 
       - name: Build site
         run: |
-          npm install
-          npm run assets
           zola build
           touch public/.nojekyll
 
