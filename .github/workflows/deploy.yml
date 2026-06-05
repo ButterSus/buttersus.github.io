@@ -24,6 +24,7 @@ jobs:
         uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
         with:
           zola_version: v0.22.0
+          config: zola.toml
 
   deploy:
     runs-on: ubuntu-latest
