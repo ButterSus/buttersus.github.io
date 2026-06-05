@@ -1,8 +1,9 @@
-name: Build and deploy Zola website
+name: Deploy Zola to GitHub Pages
+
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -11,22 +12,36 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v6.0.1
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
+        with: { tool: zola@0.22.1 }
 
-      - name: Build Zola + upload Pages artifact
-        uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NPM packages
+        uses: actions/setup-node@v4
+        with: { node-version: 21, cache: "npm" }
+
+      - name: Build site
+        run: |
+          npm install
+          npm run assets
+          zola build
+          touch public/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          zola_version: v0.22.0
-          config: zola.toml
+          path: ./public
 
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     needs: build
     environment:
