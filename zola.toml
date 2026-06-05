@@ -1,5 +1,5 @@
 theme = "radion"
-base_url = "buttersus.github.io"
+base_url = "https://buttersus.github.io"
 
 taxonomies = [
   { name = "categories", feed = true },
