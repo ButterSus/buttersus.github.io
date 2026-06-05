@@ -8,8 +8,8 @@ taxonomies = [
 
 [markdown.highlighting]
 style = "class"
-dark_theme = "material-theme-palenight"
-light_theme = "everforest-light"
+dark_theme = "gruvbox-dark-hard"
+light_theme = "gruvbox-light-hard"
 
 [extra]
 theme = "toggle"
